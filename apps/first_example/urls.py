@@ -23,5 +23,14 @@ urlpatterns = [
             ]
         ),
     ),
-    path("users", views.UsersView.as_view(), name="users"),
+    # path("users", views.UsersView.as_view(), name="users"),
+    path(
+        "users",
+        include(
+            [
+                path("", views.UsersView.as_view(), name="users"),
+                path("/<int:amount>", views.UsersView.as_view(), name="users"),
+            ]
+        ),
+    ),
 ]
