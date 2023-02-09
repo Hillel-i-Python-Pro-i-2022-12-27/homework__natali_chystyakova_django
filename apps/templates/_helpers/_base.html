@@ -2,12 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>
-        {% if title %}
-            {{ title }} |
-        {% endif %}
-        My Awesome Blog
-    </title>
+    <title>{% block title %} home {% endblock %}</title>
+
 </head>
 <body>
 <div>
