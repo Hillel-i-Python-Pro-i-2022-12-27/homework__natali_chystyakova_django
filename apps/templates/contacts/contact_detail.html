@@ -5,6 +5,9 @@
 {%  block content %}
    <form method="post" >
         {% csrf_token %}
-         <p> {{ object }}</p>
+        <p> {{ object }}</p>
+        <p>ID contact: {{ object.id }}</p>
+        <p>Name contact: {{ object.name }}</p>
+        <p>Phone number: {{ object.phone }}</p>
    </form>
 {% endblock %}
