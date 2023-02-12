@@ -15,7 +15,7 @@
     <ul>
         {% for contact in object_list %}
             <li>
-                <span>{{ contact.name }}, </span>
+                <span><a href="{{ contact.get_url }}">{{ contact.name }}</a> </span>
                 <span> - </span>
                 <span>{{ contact.phone }}</span>
                 <span> - </span>
