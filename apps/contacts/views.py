@@ -18,17 +18,13 @@ def list_contacts(request):
 
 class ContactListView(ListView):
     model = Contact
+    allow_empty = False
     queryset = Contact.objects.all().order_by("-modified_at")
 
 
 class ContactDetailView(DetailView):
     model = Contact
-    fields = (
-        "name",
-        "phone",
-        "is_auto_generated",
-    )
-    success_url = reverse_lazy("contacts:list_by_class")
+    pk_url_kwarg = "pk"
 
 
 class ContactCreateView(CreateView):
