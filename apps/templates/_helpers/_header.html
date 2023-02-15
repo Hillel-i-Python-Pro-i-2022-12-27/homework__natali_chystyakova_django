@@ -4,5 +4,7 @@
         <li><a href="{% url "first_example:index" %}"> Greetings </a></li>
         <li><a href="{% url "first_example:hello_with_args" name="Mary" age=20 %}"> Greetings with args </a></li>
         <li><a href="{% url "first_example:users" amount=5 %}"> Users </a></li>
+         <li><a href="{% url "contacts:list_by_function" %}"> Contacts by list </a></li>
+        <li><a href="{% url "contacts:list_by_class" %}"> Contacts by class</a></li>
     </ul>
 </header>
