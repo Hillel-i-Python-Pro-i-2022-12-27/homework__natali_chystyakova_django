@@ -9,27 +9,17 @@ urlpatterns = [
         "hello",
         include(
             [
-                # path("", views.greetings, name="index"),
-                # path("/<str:name>/<int:age>", views.greetings, name="hello_with_args"),
                 path("", views.GreetingsView.as_view(), name="index"),
-                path(
-                    "/",
-                    include(
-                        [
-                            path("/<str:name>/<int:age>", views.GreetingsView.as_view(), name="hello_with_args"),
-                        ]
-                    ),
-                ),
+                path("<str:name>/<int:age>/", views.GreetingsView.as_view(), name="hello_with_args"),
             ]
         ),
     ),
-    # path("users", views.UsersView.as_view(), name="users"),
     path(
         "users",
         include(
             [
                 path("", views.UsersView.as_view(), name="users"),
-                path("/<int:amount>", views.UsersView.as_view(), name="users"),
+                path("<int:amount>/", views.UsersView.as_view(), name="users"),
             ]
         ),
     ),
