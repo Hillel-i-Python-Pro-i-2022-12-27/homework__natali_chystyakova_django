@@ -19,6 +19,13 @@
                 <span> - </span>
                 <span>{{ contact.phone }}</span>
                 <span> - </span>
+                {%  if contact.operator is not None %}
+                    <span>{{ contact.operator }}</span>
+                {% else %}
+                    <span> Unknown </span>
+                {% endif %}
+
+                <span> - </span>
                 <span>{{ contact.modified_at }}</span>
 
             </li>
