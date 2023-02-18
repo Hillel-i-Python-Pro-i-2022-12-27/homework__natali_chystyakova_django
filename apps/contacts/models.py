@@ -30,6 +30,12 @@ class Contact(models.Model):
         null=True,
         blank=False,
     )
+    avatar = models.ImageField(
+        max_length=255,
+        upload_to="contacts/contact/avatar/",
+        blank=True,
+        null=True,
+    )
 
     def get_url(self):
         return reverse("contacts:details", args=[self.id])
