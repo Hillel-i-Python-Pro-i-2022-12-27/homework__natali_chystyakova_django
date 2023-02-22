@@ -18,8 +18,8 @@ def list_contacts(request):
 
 class ContactListView(ListView):
     model = Contact
-    allow_empty = False
-    queryset = Contact.objects.all().order_by("-modified_at")
+    allow_empty = True
+    queryset = Contact.objects.all().order_by("modified_at")
 
 
 class ContactDetailView(DetailView):
