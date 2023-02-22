@@ -158,8 +158,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
-db/*
-!db/.gitkeep
+#db/*
+#!db/.gitkeep
 
 media/*
 !media/.gitkeep
+
+
+docker-compose.override.yml
+.env
