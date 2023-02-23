@@ -24,12 +24,12 @@ env.read_env(BASE_DIR.joinpath(".env"))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "django-insecure-mji0)owi8j7q(6jqiq529m6#e_ut^iu81+y2ngx6#eyyp-31j%"
+
 SECRET_KEY = env.str("DJANGO__SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+
 DEBUG = env.bool("DJANGO__DEBUG", False)
 
 ALLOWED_HOSTS = env.list("DJANGO__ALLOWED_HOSTS", default=[])
@@ -41,11 +41,6 @@ if DEBUG:
             "127.0.0.1",
         ]
     )
-# ALLOWED_HOSTS = [
-#     "localhost",
-#     "0.0.0.0",
-#     "127.0.0.1",
-# ]
 
 
 # Application definition
@@ -63,6 +58,7 @@ LOCAL_APPS = [
     "apps.first_example",
     "apps.contacts",
     "apps.user",
+    "apps.sessions_user",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -108,12 +104,6 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db" / "db.sqlite3",
-#     }
-# }
 
 DATABASES = {
     "default": env.db_url_config(
