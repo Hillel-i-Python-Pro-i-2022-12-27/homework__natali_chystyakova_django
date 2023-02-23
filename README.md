@@ -26,6 +26,11 @@ Add contacts. Make CRUD for contacts:
 5. Delete contact
 
 
+# Homework 11. Django. Admin (with superuser for this)
+1. Create a custom user model. Tie django to this model. You can even not redefine the fields.
+2. Make command in makefile to create super user using createsuperuser
+3. Create an admin panel for existing models.
+
 * :wrench: install and update requiremets before run projet: make init-dev
 * :arrow_forward: run this project without docker: make homework-i-run
 * :whale: run this project with docker: make d-homework-i-run
