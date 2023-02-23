@@ -45,7 +45,10 @@ DEBUG
 SECRET_KEY
 ALLOWED_HOSTS
 
-
+# Homework 14. Django. Session
+1. Make a view using session storage. For example, store and display:
+1.1 Datetime of last visit
+1.2 Number of visits
 
 
 * :wrench: install and update requiremets before run projet: make init-dev
