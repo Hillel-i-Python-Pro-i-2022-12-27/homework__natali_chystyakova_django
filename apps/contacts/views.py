@@ -32,6 +32,7 @@ class ContactCreateView(CreateView):
     fields = (
         "name",
         "phone",
+        "avatar",
         "operator",
         "is_auto_generated",
     )
@@ -44,6 +45,7 @@ class ContactUpdateView(UpdateView):
         "id",
         "name",
         "phone",
+        "avatar",
         "operator",
         "is_auto_generated",
     )

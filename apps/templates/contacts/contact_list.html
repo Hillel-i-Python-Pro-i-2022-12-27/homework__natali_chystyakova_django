@@ -7,43 +7,55 @@
 
 {%  block content %}
     <a href="{% url "contacts:create" %}">
-        <button>
+        <button class="btn btn-primary">
             Create new contact
         </button>
     </a>
 
     <ul>
         {% for contact in object_list %}
-            <li>
-                <span><a href="{{ contact.get_url }}">{{ contact.name }}</a> </span>
-                <span> - </span>
-                <span>{{ contact.phone }}</span>
-                <span> - </span>
-                {%  if contact.operator is not None %}
-                    <span>{{ contact.operator }}</span>
-                {% else %}
-                    <span> Unknown </span>
-                {% endif %}
+            <li class="row my-elements-box">
+                <div class="col my-element-style">
+                    <div class="contact-avatar">
+                        {% if contact.avatar %}
+                            <img src="{{ contact.avatar.url }}" alt="Avatar" >
+                        {% endif %}
+                    </div>
 
-                <span> - </span>
-                <span>{{ contact.modified_at }}</span>
+                    <div class="my-element-content">
+                        <span><a href="{{ contact.get_url }}">{{ contact.name }}</a> </span>
+                        <span> - </span>
+                        <span>{{ contact.phone }}</span>
+                        <span> - </span>
+                        {%  if contact.operator is not None %}
+                            <span>{{ contact.operator }}</span>
+                        {% else %}
+                            <span> Unknown </span>
+                        {% endif %}
 
+                        <span> - </span>
+                        <span>{{ contact.modified_at }}</span>
+                    </div >
+
+                    <div class="my-element-controls">
+                        <a href="{% url "contacts:update" pk=contact.id %}">
+                            <button class="btn btn-success">
+                                Edit
+                            </button>
+                        </a>
+                        <a href="{% url "contacts:delete" pk=contact.id %}">
+                            <button class="btn btn-warning">
+                                Delete
+                            </button>
+                        </a>
+                        <a href="{% url "contacts:details" pk=contact.id %}">
+                            <button class="btn btn-success">
+                                view on the site
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </li>
-            <a href="{% url "contacts:update" pk=contact.id %}">
-                    <button>
-                        Edit
-                    </button>
-                </a>
-                <a href="{% url "contacts:delete" pk=contact.id %}">
-                    <button>
-                        Delete
-                    </button>
-                </a>
-                <a href="{% url "contacts:details" pk=contact.id %}">
-                    <button>
-                        view on the site
-                    </button>
-                </a>
         {% endfor %}
     </ul>
 {% endblock %}

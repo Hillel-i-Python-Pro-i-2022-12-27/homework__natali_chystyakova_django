@@ -31,6 +31,12 @@ Add contacts. Make CRUD for contacts:
 2. Make command in makefile to create super user using createsuperuser
 3. Create an admin panel for existing models.
 
+# Homework 12. Django. Static, Media, Crispy Forms, CSS.
+1. Add an SVG image (for example, as a logo) and a favicon to the site via static files.
+2. Add CSS or SCSS via static files. Change some styles in the application.
+3. Add upload media files. For example, uploading an avatar + displaying this avatar.
+4. Connect crispy-forms + templates to the chosen framework. For example Bootstrap5.
+
 * :wrench: install and update requiremets before run projet: make init-dev
 * :arrow_forward: run this project without docker: make homework-i-run
 * :whale: run this project with docker: make d-homework-i-run
