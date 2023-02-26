@@ -6,9 +6,8 @@ from django.contrib.sessions.backends.cached_db import SessionStore
 from django.views.generic import TemplateView
 
 KEY__COUNT_OF_VISITS: Final[str] = "count_of_visits"
-# KEY__EXTRA_DATA: Final[str] = "extra_data"
-DATA_NOW: [str] = "data_now"
-NESTED_TIME: [str] = "nested_time"
+
+KEY__PREVIOUS_TIME: [str] = "datetime_of_previous_visit"
 
 
 class SessionUserView(TemplateView):
@@ -19,10 +18,10 @@ class SessionUserView(TemplateView):
         count_of_visits = session.get(KEY__COUNT_OF_VISITS, 0)
 
         count_of_visits += 1
-        data_now = str(datetime.now())
-        nested_time = session.get(NESTED_TIME, 0)
-        session[NESTED_TIME] = nested_time
-        session[NESTED_TIME] = data_now
+        date_now = str(datetime.now())
+        datetime_of_previous_visit = session.get(KEY__PREVIOUS_TIME, 0)
+
+        session[KEY__PREVIOUS_TIME] = date_now
 
         session[KEY__COUNT_OF_VISITS] = count_of_visits
 
@@ -31,7 +30,7 @@ class SessionUserView(TemplateView):
         context["session_id"] = session.session_key
         context["count_of_visits"] = count_of_visits
 
-        context["data_now"] = data_now
-        context["nested_time"] = nested_time
+        context["date_now"] = date_now
+        context["datetime_of_previous_visit"] = datetime_of_previous_visit
 
         return context
