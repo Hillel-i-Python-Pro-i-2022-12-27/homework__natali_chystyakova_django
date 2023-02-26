@@ -37,6 +37,20 @@ Add contacts. Make CRUD for contacts:
 3. Add upload media files. For example, uploading an avatar + displaying this avatar.
 4. Connect crispy-forms + templates to the chosen framework. For example Bootstrap5.
 
+# Homework 13. Django. Env, Postgres, Docker Compose profiles
+1. Migrate some past django homework (using a database) from sqlite to postgres.
+2. Implement getting settings through env-files and environment variables. 
+3. database connection:
+DEBUG
+SECRET_KEY
+ALLOWED_HOSTS
+
+# Homework 14. Django. Session
+1. Make a view using session storage. For example, store and display:
+1.1 Datetime of last visit
+1.2 Number of visits
+
+
 * :wrench: install and update requiremets before run projet: make init-dev
 * :arrow_forward: run this project without docker: make homework-i-run
 * :whale: run this project with docker: make d-homework-i-run

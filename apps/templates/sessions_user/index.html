@@ -1,0 +1,15 @@
+{% extends "_helpers/_base.html" %}
+
+{%  block title %}
+
+    Session user
+{%  endblock  %}
+
+{%  block content %}
+    <div >
+        <p class="col my-element-style"> Session ID : {{ session_id }} </p>
+        <p class="col my-element-style">Counter of visits:  {{ count_of_visits }}</p>
+        <p class="col my-element-style"> visit time now: {{ data_now }}</p>
+        <p class="col my-element-style"> time of last visit: {{ nested_time}}</p>
+    </div>
+{% endblock %}

@@ -16,8 +16,8 @@ class Operator(models.Model):
 
 
 class Contact(models.Model):
-    name = models.CharField(max_length=50)
-    phone = models.PositiveSmallIntegerField()
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
@@ -26,15 +26,17 @@ class Contact(models.Model):
         Operator,
         on_delete=models.CASCADE,
         related_name="contacts",
+        max_length=50,
         default=None,
         null=True,
-        blank=False,
+        blank=True,
     )
     avatar = models.ImageField(
-        max_length=255,
+        max_length=300,
         upload_to="contacts/contact/avatar/",
         blank=True,
         null=True,
+        default=None,
     )
 
     def get_url(self):
