@@ -37,7 +37,19 @@
     height: 2em;
 }
 
+.my-element-style.user-avatar,
+.my-element-style.user-avatar > img {
+    /*width: 2em;*/
+    /*height: 2em;*/
+    width: 32px;
+    height: 32px;
+}
+
+
 .logo {
     width: 2em;
     height: 2em;
 }
+
+
+
