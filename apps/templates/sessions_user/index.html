@@ -9,7 +9,12 @@
     <div >
         <p class="col my-element-style"> Session ID : {{ session_id }} </p>
         <p class="col my-element-style">Counter of visits:  {{ count_of_visits }}</p>
-        <p class="col my-element-style"> visit time now: {{ data_now }}</p>
-        <p class="col my-element-style"> time of last visit: {{ nested_time}}</p>
+        <p class="col my-element-style"> visit time now: {{ date_now }}</p>
+        {% if datetime_of_previous_visit %}
+            <p class="col my-element-style"> time of last visit: {{ datetime_of_previous_visit}}</p>
+        {% else %}
+            <p class="col my-element-style"> time of last visit: You haven't had any visits yet</p>
+        {% endif %}
+
     </div>
 {% endblock %}
