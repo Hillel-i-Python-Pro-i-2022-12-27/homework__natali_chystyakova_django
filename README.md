@@ -50,6 +50,13 @@ ALLOWED_HOSTS
 1.1 Datetime of last visit
 1.2 Number of visits
 
+Django. User (Sign up, Log in, Log out). Login required.
+# Homework 15. Django. User (Sign up, Log in, Log out). Login required.
+1. Add registration and authorization for the user.
+2. Sign in and out of your account.
+3. Add an avatar for the user (if not already done).
+4. Restrict access to at least one page. At least so that only an authorized user can access it.
+
 
 * :wrench: install and update requiremets before run projet: make init-dev
 * :arrow_forward: run this project without docker: make homework-i-run
