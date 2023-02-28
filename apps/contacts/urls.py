@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.urls import include
+from django.contrib.auth.decorators import login_required
 
 app_name = "contacts"
 
@@ -15,7 +16,7 @@ urlpatterns = [
         ),
     ),
     path("create/", views.ContactCreateView.as_view(), name="create"),
-    path("update/<int:pk>/", views.ContactUpdateView.as_view(), name="update"),
-    path("delete/<int:pk>/", views.ContactDeleteView.as_view(), name="delete"),
+    path("update/<int:pk>/", login_required(views.ContactUpdateView.as_view()), name="update"),
+    path("delete/<int:pk>/", login_required(views.ContactDeleteView.as_view()), name="delete"),
     path("details/<int:pk>/", views.ContactDetailView.as_view(), name="details"),
 ]
