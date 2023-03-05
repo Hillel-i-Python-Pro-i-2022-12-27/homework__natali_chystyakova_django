@@ -1,5 +1,7 @@
+from pyexpat.errors import messages
+
 from django.shortcuts import redirect
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
@@ -44,6 +46,12 @@ class LoginUser(LoginView):
     template_name = "registration/login.html"
 
 
+def logout_request(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    # return redirect("root:index")
+
+
 class UserUpdateView(UpdateView):
     model = User
 
@@ -51,7 +59,6 @@ class UserUpdateView(UpdateView):
     fields = (
         "username",
         "email",
-        "password",
         "avatar",
     )
     success_url = reverse_lazy("root:index")

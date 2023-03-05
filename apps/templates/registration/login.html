@@ -9,5 +9,12 @@
         {% csrf_token %}
         {{ form|crispy }}
         <button type="submit" class="btn btn-primary">Log In</button>
+
+
+        <a href="{% url 'password_reset' %}">
+                <button type="button" class="btn btn-warning">
+                    Forgot password
+                </button>
+        </a>
     </form>
 {% endblock %}
