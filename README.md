@@ -57,6 +57,29 @@ Django. User (Sign up, Log in, Log out). Login required.
 3. Add an avatar for the user (if not already done).
 4. Restrict access to at least one page. At least so that only an authorized user can access it.
 
+# Homework 16 Django. Logger-counter via middleware. + Extra
+
+1. Main task:
+Every HTTP request needs to be logged. Event data must be stored in a database.
+For implementation, use the middleware mechanism.
+2. Storage.
+In the model, store a few data related to the request. For example:
+* path
+* binding to the user, if any.
+* By foreign key.
+* Without deleting the record when deleting a user.
+* session key.
+
+3. Enforce a unique constraint at the ORM level.
+4. Add a command to remove all entries for this data.
+5. List output.
+* all entries
+* for the current user (if the user is authorized)
+* for the current session.
+6. You can enable pagination
+7. Aggregation.
+
+
 
 * :wrench: install and update requiremets before run projet: make init-dev
 * :arrow_forward: run this project without docker: make homework-i-run
