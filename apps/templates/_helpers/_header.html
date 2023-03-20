@@ -28,7 +28,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url "sessions_user:index" %}"> Sessions</a>
             </li>
-
+            <li class="nav-item">
+                    <a class="nav-link" href="{% url "my_middleware:list_middleware" %}">Logs middleware</a>
+                </li>
 
         </ul>
     </nav >
@@ -57,6 +59,30 @@
         </li>
     {% endif %}
 
+{% block content %} {% endblock %}
+
+{% block pagination %}
+    {% if is_paginated %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class=aria-current="page">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+
+        </ul>
+    </nav>
+    {% endif %}
+{% endblock %}
 </header>
 
 
