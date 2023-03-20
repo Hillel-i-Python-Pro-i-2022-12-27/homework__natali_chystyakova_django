@@ -59,6 +59,7 @@ LOCAL_APPS = [
     "apps.contacts",
     "apps.user",
     "apps.sessions_user",
+    "apps.my_middleware",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -74,7 +75,17 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # "apps.my_middleware.middleware.RequestMiddleware",
 ]
+
+
+USE_EXTRA_MIDDLEWARES = env.bool("CUSTOM__USE_EXTRA_MIDDLEWARES", False)
+if USE_EXTRA_MIDDLEWARES:
+    MIDDLEWARE.extend(
+        [
+            "apps.my_middleware.middleware.RequestMiddleware",
+        ]
+    )
 
 ROOT_URLCONF = "core.urls"
 AUTH_USER_MODEL = "user.User"
@@ -169,3 +180,4 @@ LOGIN_REDIRECT_URL = "root:index"
 LOGOUT_REDIRECT_URL = "root:index"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# SESSION_SAVE_EVERY_REQUEST = True
