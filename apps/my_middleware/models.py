@@ -10,7 +10,7 @@ class Middleware_my_logger(models.Model):
     user_is_authenticated = models.BooleanField(default=False)
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="user",
         max_length=50,
         default=None,
