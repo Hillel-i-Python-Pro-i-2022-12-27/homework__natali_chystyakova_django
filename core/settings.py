@@ -59,7 +59,7 @@ LOCAL_APPS = [
     "apps.contacts",
     "apps.user",
     "apps.sessions_user",
-    "apps.my_middleware",
+    "apps.middleware_loggers",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -75,7 +75,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # "apps.my_middleware.middleware.RequestMiddleware",
+    # "apps.middleware_loggers.middleware.RequestMiddleware",
 ]
 
 
@@ -83,7 +83,7 @@ USE_EXTRA_MIDDLEWARES = env.bool("CUSTOM__USE_EXTRA_MIDDLEWARES", False)
 if USE_EXTRA_MIDDLEWARES:
     MIDDLEWARE.extend(
         [
-            "apps.my_middleware.middleware.RequestMiddleware",
+            "apps.middleware_loggers.middleware.RequestMiddleware",
         ]
     )
 
