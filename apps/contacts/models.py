@@ -1,16 +1,22 @@
 from django.db import models
 from django.urls import reverse
 
+# from django.contrib.auth import get_user_model
 
+
+# User = get_user_model()
 class Operator(models.Model):
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(
+        max_length=50,
+        default="Operator",
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"{self.name}"
+        return self.name
 
     __repr__ = __str__
 
