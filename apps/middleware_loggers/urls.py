@@ -2,7 +2,7 @@ from . import views
 from django.urls import path
 
 
-app_name = "my_middleware"
+app_name = "middleware_loggers"
 
 urlpatterns = [
     path("", views.MiddlewareListView.as_view(), name="list_middleware"),
