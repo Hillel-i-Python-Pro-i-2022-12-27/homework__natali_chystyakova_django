@@ -5,13 +5,13 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class Middleware_my_logger(models.Model):
+class QueryLogger(models.Model):
     path = models.CharField(max_length=250)
     user_is_authenticated = models.BooleanField(default=False)
     user = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
-        related_name="user",
+        related_name="users",
         max_length=50,
         default=None,
         null=True,
