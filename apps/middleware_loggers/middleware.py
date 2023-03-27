@@ -1,7 +1,7 @@
 import logging
 from typing import ClassVar
 from collections.abc import Callable
-from apps.my_middleware.models import Middleware_my_logger
+from apps.middleware_loggers.models import QueryLogger
 
 
 class RequestMiddleware:
@@ -25,13 +25,13 @@ class RequestMiddleware:
         user_is_authenticated = request.user.is_authenticated
         user = request.user if user_is_authenticated else request.user.id
 
-        if Middleware_my_logger.objects.filter(
+        if QueryLogger.objects.filter(
             path=path,
             session_id=session_id,
             user_is_authenticated=user_is_authenticated,
             user=user,
         ).exists():
-            is_present = Middleware_my_logger.objects.get(
+            is_present = QueryLogger.objects.get(
                 path=path,
                 session_id=session_id,
                 user_is_authenticated=user_is_authenticated,
@@ -41,7 +41,7 @@ class RequestMiddleware:
             is_present.save()
 
         else:
-            Middleware_my_logger.objects.create(
+            QueryLogger.objects.create(
                 path=path,
                 session_id=session_id,
                 user_is_authenticated=user_is_authenticated,

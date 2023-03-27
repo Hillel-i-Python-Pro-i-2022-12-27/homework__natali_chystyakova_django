@@ -2,8 +2,8 @@ from django.contrib import admin
 from . import models
 
 
-@admin.register(models.Middleware_my_logger)
-class MiddlewareMyLoggerAdmin(admin.ModelAdmin):
+@admin.register(models.QueryLogger)
+class QueryLoggerAdmin(admin.ModelAdmin):
     list_display = (
         "path",
         "user",
@@ -13,5 +13,5 @@ class MiddlewareMyLoggerAdmin(admin.ModelAdmin):
     list_filter = ("user",)
 
 
-class MiddlewareMyLoggerInline(admin.TabularInline):
-    model = models.Middleware_my_logger
+class QueryLoggerInline(admin.TabularInline):
+    model = models.QueryLogger

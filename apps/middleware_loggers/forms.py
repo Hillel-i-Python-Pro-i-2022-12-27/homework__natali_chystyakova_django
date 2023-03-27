@@ -1,11 +1,11 @@
 from django import forms
 
-from apps.my_middleware.models import Middleware_my_logger
+from apps.middleware_loggers.models import QueryLogger
 
 
 class MiddlewareByUserForm(forms.ModelForm):
     class Meta:
-        model = Middleware_my_logger
+        model = QueryLogger
         fields = (
             "path",
             "user",

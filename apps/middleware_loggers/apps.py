@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class MyMiddlewareConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "apps.my_middleware"
+    name = "apps.middleware_loggers"
