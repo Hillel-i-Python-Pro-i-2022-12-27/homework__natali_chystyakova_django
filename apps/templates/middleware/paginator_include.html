@@ -1,61 +1,57 @@
-
-
 {% block pagination %}
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <span class="step-links">
+    {% if is_paginated %}
+        <nav>
+            <ul class="pagination">
                 {% if page_obj.has_previous %}
-                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                    <li class="page-item">
+                        <a class="page-link" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">
+                            Previous
+                        </a>
+                    </li>
                 {% endif %}
 
-                <span class=aria-current="page">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="{{ request.path }}?page={{ num }}">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ request.path }}?page={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
 
                 {% if page_obj.has_next %}
-                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                    <li class="page-item">
+                        <a class="page-link" href="{{ request.path }}?page={{ page_obj.next_page_number }}">
+                            Next
+                        </a>
+                    </li>
                 {% endif %}
-            </span>
-
-        </ul>
-    </nav>
+            </ul>
+        </nav>
+    {% endif %}
 {% endblock %}
 
 
-
-{#<nav aria-label="...">#}
-{#    <ul class="pagination">#}
-{#        <li class="page-item disabled">#}
-{#            <span class="page-link">Previous</span>#}
-{#        </li>#}
-{#        <li class="page-item"><a class="page-link" href="#">1</a></li>#}
-{#        <li class="page-item active" aria-current="page">#}
-{#            <span class="page-link">2</span>#}
-{#        </li>#}
-{#        <li class="page-item"><a class="page-link" href="#">3</a></li>#}
-{#        <li class="page-item">#}
-{#            <a class="page-link" href="#">Next</a>#}
-{#        </li>#}
-{#    </ul>#}
-{#</nav>#}
-
-
 {#{% block pagination %}#}
-{#    #{% if is_paginated %}#}
-{#        <nav aria-label="...">#}
-{#            <ul class="pagination">#}
-{#                <li class="page-item disabled">#}
-{#                    <span class="page-link">Previous</span>#}
-{#                </li>#}
-{#                <li class="page-item"><a class="page-link" href="#">1</a></li>#}
-{#                <li class="page-item active" aria-current="page">#}
-{#                    <span class="page-link">2</span>#}
-{#                </li>#}
-{#                <li class="page-item"><a class="page-link" href="#">3</a></li>#}
-{#                <li class="page-item">#}
-{#                    <a class="page-link" href="#">Next</a>#}
-{#                </li>#}
-{#            </ul>#}
-{#        </nav>#}
-{#   # {% endif %}#}
+{#    <nav aria-label="Page navigation example">#}
+{#        <ul class="pagination">#}
+{#            <span class="step-links">#}
+{#                {% if page_obj.has_previous %}#}
+{#                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>#}
+{#                {% endif %}#}
+{##}
+{#                <span class=aria-current="page">#}
+{#                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
+{#                </span>#}
+{##}
+{#                {% if page_obj.has_next %}#}
+{#                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>#}
+{#                {% endif %}#}
+{#            </span>#}
+{##}
+{#        </ul>#}
+{#    </nav>#}
 {#{% endblock %}#}
