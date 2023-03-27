@@ -2,7 +2,7 @@ import logging
 
 from django.core.management import BaseCommand
 
-from apps.my_middleware.models import Middleware_my_logger
+from apps.middleware_loggers.models import QueryLogger
 
 
 class Command(BaseCommand):
@@ -15,7 +15,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         logger = logging.getLogger("django")
-        queryset = Middleware_my_logger.objects.all()
+        queryset = QueryLogger.objects.all()
         logger.info(f"Current number of logs before: {queryset.count()}")
         queryset_for_delete = queryset
         total_deleted, details = queryset_for_delete.delete()
