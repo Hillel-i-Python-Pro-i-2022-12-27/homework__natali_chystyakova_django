@@ -28,7 +28,7 @@ urlpatterns = [
     path("contacts/", include("apps.contacts.urls")),
     path("user/", include("apps.user.urls")),
     path("sessions-user/", include("apps.sessions_user.urls")),
-    path("my-middleware/", include("apps.my_middleware.urls")),
+    path("middleware_loggers/", include("apps.middleware_loggers.urls")),
     path("", include("apps.first_example.urls_root")),
 ]
 
