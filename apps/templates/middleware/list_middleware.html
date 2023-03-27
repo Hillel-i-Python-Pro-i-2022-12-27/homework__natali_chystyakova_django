@@ -6,12 +6,12 @@
 {%  endblock  %}
 
 {% block content %}
-    <a href="{% url "my_middleware:list_middleware_user" %}">
+    <a href="{% url "middleware_loggers:list_middleware_user" %}">
         <button class="btn btn-primary">
             Log List by User
         </button>
     </a>
-    <a href="{% url "my_middleware:list_middleware_sessions" %}">
+    <a href="{% url "middleware_loggers:list_middleware_sessions" %}">
         <button class="btn btn-primary">
             Log List by Sessions
         </button>
@@ -24,9 +24,13 @@
                     <div class="my-element-content">
                         <p>ID: {{ log.id }}</p>
                         <p>Request path: {{ log.path }}</p>
-                        <p>User: {{ log.user }}</p>
+                        {% if user.is_authenticated %}
+                            <p>User: {{ log.user }}</p>
+                        {% else %}
+                            <p>User: Unknown user</p>
+                        {% endif %}
                         <p>Session id: {{ log.session_id }}</p>
-                        <p>Counter: {{ log.count_requests }}</p>
+                        <p>Count_requests: {{ log.count_requests }}</p>
                         <p>Created time: {{ log.visit_time }}</p>
                     </div>
                 </div>
@@ -34,7 +38,8 @@
         {% endfor %}
 
     </ol>
-    {%  include "middleware/paginator_include.html" with page=page_obj %}
+    {%  include "middleware/paginator_include.html"  %}
+
 
 
 {% endblock %}

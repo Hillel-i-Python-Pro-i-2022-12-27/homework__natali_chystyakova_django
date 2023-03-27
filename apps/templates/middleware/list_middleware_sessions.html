@@ -17,9 +17,13 @@
                     <div class="my-element-content">
                         <p>ID: {{ log.name}}</p>
                         <p>Request path: {{ log.path }}</p>
-                        <p>User: {{ log.user }}</p>
+                        {% if user.is_authenticated %}
+                            <p>User: {{ log.user }}</p>
+                        {% else %}
+                            <p>User: Unknown user</p>
+                        {% endif %}
                         <p>Session id: {{ log.session_id }}</p>
-                        <p>Counter: {{ log.count_requests }}</p>
+                        <p>Count_requests: {{ log.count_requests }}</p>
                         <p>Created time: {{ log.visit_time }}</p>
                     </div>
 
@@ -28,6 +32,6 @@
             </li>
         {% endfor %}
     </ol>
-    {%  include "middleware/paginator_include.html" with page=page_obj %}
+    {%  include "middleware/paginator_include.html" %}
 
 {% endblock %}
